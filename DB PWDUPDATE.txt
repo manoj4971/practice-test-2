@@ -1,0 +1,48 @@
+
+  go to /var/www
+
+for file in $(find /var/www/ -name 'appsettings.json')
+  do
+echo $file
+   sed -i 's|User:myWizard%40123|User:MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
+  
+
+-------
+for file in $(find /var/www/ -name '*.ini')
+  do
+echo $file
+   sed -i 's|User:myWizard%40123|User:MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
+  
+  -------
+  start
+  
+for file in $(find /var/www/ -name 'AzureADAuthProviderConfiguration.xml')
+  do
+echo $file
+   sed -i 's|User:myWizard%40123|User:MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
+
+
+
+######################## 
+for file in $(find /var/www/ -name '*.json')
+  do
+echo $file
+   sed -i 's|myWizard%40123|MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
+
+ 
+
+for file in $(find /var/www/ -name '*.ini')
+  do
+echo $file
+   sed -i 's|myWizard%40123|MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
+  
+for file in $(find /var/www/ -name '*.xml')
+  do
+echo $file
+   sed -i 's|myWizard%40123|MongoDBprod2024passMYWIZARD20240326|g' $file
+  done
