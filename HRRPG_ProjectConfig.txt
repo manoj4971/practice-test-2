@@ -1,0 +1,192 @@
+<ToolGateway ToolGatewayUId="423CAC9F-C5E0-4F62-B010-7939327F6DAC" Name="DeutscheTelekom-134391-CLOUDJIRA-US-Inbound" Version="01.00" HelpUrl="https://mywizard.accenture.com/help" EnableVerboseLogging="true">
+
+  <Tool ToolUId="2B51DDAA-C87A-4381-BBF4-16CDB0130AD5" Name="DeutscheTelekom-134391-CLOUDJIRA-US-Inbound" Version="10">
+    <ToolInstance ToolInstanceUId="00000090-0010-0010-0010-000000000000" Name="DeutscheTelekom-134391-CLOUDJIRA-US-Inbound" Url="https://jira.telekom.de/" ClientUId="dadfc54d-269b-48b9-ae48-257d99963890" SupportEmail="mywizard.support@accenture.com" ServiceAccountEmail="mywizard-gatewaymanager@mywizard.com" UserEmailId="michael-bruno.psotka@external.telekom.de" HelpUrl="https://mywizard.accenture.com/help" />
+  </Tool>
+
+  <ProcessPipelines>
+    <ProcessPipeline ProcessPipelineUId="ded6044d-f979-4cf0-96d3-02fb1f731768" Name="DeutscheTelekom-134391-CLOUDJIRA-US-Inbound" ShortName="DeutscheTelekom-134391-CLOUDJIRA-US-Inbound" FolderPath="/mnt/myWizard-Phoenix/GatewayManager/ProcessPipelines/{ProcessPipelineShortName}" DataStoreFilePath="{ProcessPipelineFolderPath}/{ProcessPipelineShortName}-DataStore.json" InstanceFolderPath="{ProcessPipelineFolderPath}/Instances" TimeZone="UTC" SupportMultipleResultSet="true" NumberOfParellelProcesses="1">
+      <Events>
+        <Event EventUId="90E174E2-E793-4B9D-BE2A-4D39C6D7BE81" Name="Event-OnDataProviderReading" EventTypeName="OnDataProviderReading">
+          <EventTasks>
+            <EventTask EventTaskUId="71469BC2-B004-459E-B6B9-5DDBE3A25E7D" Name="EventTask-DataProvider-UserStory" EventTaskTypeName="DataProvider" Order="10" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <DataProvider DataProviderUId="3E7D23CE-2125-45DE-B897-05FB3E495942" />
+            </EventTask>
+
+            <EventTask EventTaskUId="E3EA2D93-DA11-43C9-A98C-89DD08C2BC32" Name="EventTask-DataProvider-Epic" EventTaskTypeName="DataProvider" Order="20" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <DataProvider DataProviderUId="2E5D23C9-B19A-4695-9A50-FD04A9048483" />
+            </EventTask>
+
+            <EventTask EventTaskUId="5B5554A2-FF71-409F-88ED-21A9908E504E" Name="EventTask-DataProvider-Task" EventTaskTypeName="DataProvider" Order="30" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <DataProvider DataProviderUId="B2F37517-7896-45DE-ABB4-95B097FC0BA2" />
+            </EventTask>
+
+            <EventTask EventTaskUId="81C57285-9132-45B3-AFF4-0CC20B8B3759" Name="EventTask-DataProvider-Bug" EventTaskTypeName="DataProvider" Order="30" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <DataProvider DataProviderUId="0DF15E94-70A7-463B-9F09-6185F8AEB6EA" />
+            </EventTask>
+
+            
+
+			  <EventTask EventTaskUId="55b88bcf-fa8f-496e-a455-d6579f15fd76" Name="EventTask-DataProvider-Feature" EventTaskTypeName="DataProvider" Order="60" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+				  <DataProvider DataProviderUId="99537D18-6177-40EB-BF15-52B2A9CFB6A5" />
+			  </EventTask>
+
+          </EventTasks>
+        </Event>
+
+        <Event EventUId="73DB90DD-27ED-4879-BF52-4E375B3330D0" Name="Event-OnDataProviderReadEnd" EventTypeName="OnDataProviderReadEnd">
+          <EventTasks>
+            <EventTask EventTaskUId="BFB01D8B-B129-4EF7-AFEB-AD905567D786" Name="EventTask-DataFormatter" EventTaskTypeName="DataFormatter" Order="10" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <DataFormatter DataFormatterUId="A9DD5094-B5C7-4756-A769-430F618800A4" />
+            </EventTask>
+          </EventTasks>
+        </Event>
+
+        <!-- <Event EventUId="05D87CC9-DE64-46BA-BA16-0DB6EB1B2DEB" -->
+        <!-- Name="OnRuleExecutionBegin" -->
+        <!-- EventTypeName="OnRuleExecutionBegin"> -->
+        <!-- <EventTasks> -->
+        <!-- <EventTask EventTaskUId="18E68218-29FC-4C92-B4C3-EDBD51F1835E" -->
+        <!-- Name="OnRuleExecutionBegin-EventTask10" -->
+        <!-- EventTaskTypeName="PropertyInjector" -->
+        <!-- Order="10" -->
+        <!-- EnableInputPersistence="true" -->
+        <!-- EnableOutputPersistence="true" -->
+        <!-- EnableVerboseLogging="true"> -->
+        <!-- <PropertyInjectors> -->
+        <!-- <PropertyInjector PropertyInjectorUId="4AF9C44E-2586-4F48-89A1-647FBDB15D56" /> -->
+        <!-- </PropertyInjectors> -->
+        <!-- </EventTask> -->
+        <!-- </EventTasks> -->
+        <!-- </Event> -->
+
+        <Event EventUId="40C10733-3373-4D34-88DA-987B60026E44" Name="OnSubscriberNotificationBegin" EventTypeName="OnSubscriberNotificationBegin">
+          <EventTasks>
+            <EventTask EventTaskUId="1AB113BA-834A-4F76-9AB5-817964BCCA8E" Name="CustomCodeExecutor-ReferenceDataLookup" EventTaskTypeName="CustomCodeExecutor" Order="10" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <CustomCodeExecutor CustomCodeExecutorUId="9B7358E0-E75E-4C62-8899-C70A1784324A" Name="CustomCodeExecutor" LibraryFilePath="/var/www/GatewayManager/myWizard.GatewayManager.EngineInboundService-10/Accenture.MyWizard.GatewayManager.CustomLibrary.dll" ClassFullName="Accenture.MyWizard.GatewayManager.CustomLibrary.ReferenceDataLookupV2" MethodName="ApplyReferenceDataLookup">
+
+                <Parameters>
+                  <Parameter ParameterUId="3255382C-7313-4335-B377-8C3D0F59C1C8" Name="DeliveryConstructUId" Value="726c661e-10a4-45a2-93bf-863039fbdd36" />
+                  <Parameter ParameterUId="5A7A4318-ED6C-447E-A868-95083F23A599" Name="IsMaskingEnabled" Value="false" />
+                  <Parameter ParameterUId="75A5F1AC-29C4-40B8-B0AE-F53A456F998A" Name="RecordLimit" Value="5000" />
+                </Parameters>
+              </CustomCodeExecutor>
+            </EventTask>
+            <EventTask EventTaskUId="03D49C17-659E-4AA9-B10E-DD4C09CC2468" Name="CustomCodeExecutor-DeliveryConstruct" EventTaskTypeName="CustomCodeExecutor" Order="20" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <CustomCodeExecutor CustomCodeExecutorUId="ECEDD042-8D42-4F02-954F-3A6D1110EF04" Name="CustomCodeExecutor" LibraryFilePath="/var/www/GatewayManager/myWizard.GatewayManager.EngineInboundService-10/Accenture.MyWizard.GatewayManager.CustomLibrary.dll" ClassFullName="Accenture.MyWizard.GatewayManager.CustomLibrary.DeliveryConstruct" MethodName="AddDeliveryConstructs">
+                <!--<Parameters>
+                  <Parameter ParameterUId="73323DA2-7ADB-4285-A0C2-1B8B79CE99DA" Name="Merge" Value="true" />
+                </Parameters>-->
+              </CustomCodeExecutor>
+            </EventTask>
+          </EventTasks>
+        </Event>
+
+        <Event EventUId="2E110D88-60F4-4CDE-BD75-3200419FC1A4" Name="Event-OnSubscriberNotifying" EventTypeName="OnSubscriberNotifying">
+          <EventTasks>
+            <EventTask EventTaskUId="7F802059-A006-4C3B-9197-CC24AF3EAF2F" Name="EventTask-SubscriberNotifier" EventTaskTypeName="SubscriberNotifier" Order="10" EnableInputPersistence="true" EnableOutputPersistence="true" EnableVerboseLogging="true">
+              <Subscribers>
+                <Subscriber SubscriberUId="58FEEBB6-398B-483C-A5AC-67F99F292B58" />
+              </Subscribers>
+            </EventTask>
+          </EventTasks>
+        </Event>
+      </Events>
+    </ProcessPipeline>
+  </ProcessPipelines>
+
+  <DataProviders>
+    <DataProvider DataProviderUId="3E7D23CE-2125-45DE-B897-05FB3E495942" Name="DataProvider-Story" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+      <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider10" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,issuetype,customfield_18514,key,resolutiondate,customfield_12810,priority,status,issuelinks,labels,customfield_10723,customfield_58710,fixVersions,resolution,customfield_10741,customfield_22852,customfield_12810,customfield_12811,customfield_10014,created,updated,reporter,customfield_77511,customfield_77510&amp;jql=updated&gt;'{LastRanOn}'{EffectiveCondition} AND project={Key} AND issuetype=Story AND ((assignee in membersOf(&quot;team_ACN_ERPatMotion&quot;) AND Team IN(17997,17998,17999,18000,18002)) OR type IN(EPIC,INITIATIVE))&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchEpicByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,issuetype,customfield_18514,key,priority,issuelinks,labels,duedate,customfield_22852,customfield_48710,fixVersions,created,updated,reporter,status,customfield_77510&amp;jql=key in ({EpicIds})&amp;expand=changelog,renderedFields" FetchEpicFromStory="false" AssociatedIssueLinkType="" IsSubEntityFetchEnabled="true" PrimaryTable="Story" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+        <ServiceHeaders>
+          <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+        </ServiceHeaders>
+      </JIRADataProvider>
+    </DataProvider>
+
+    <DataProvider DataProviderUId="2E5D23C9-B19A-4695-9A50-FD04A9048483" Name="DataProvider-Epic" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+      <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider20" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,issuetype,customfield_18514,key,priority,issuelinks,labels,duedate,customfield_22852,customfield_48710,fixVersions,created,updated,reporter,status,customfield_77510&amp;jql=updated&gt;'{LastRanOn}' {EffectiveCondition} AND project={Key} AND issuetype=Initiative&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" PrimaryTable="Epic" EpicIsEnabled="true" IsSubEntityFetchEnabled="true" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+        <ServiceHeaders>
+          <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+        </ServiceHeaders>
+      </JIRADataProvider>
+    </DataProvider>
+
+    <DataProvider DataProviderUId="B2F37517-7896-45DE-ABB4-95B097FC0BA2" Name="DataProvider-Task" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+      <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider30" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=updated&gt;'{LastRanOn}'{EffectiveCondition} AND project={Key} AND issuetype IN (Task,Sub-task) AND ((assignee in membersOf(&quot;team_ACN_ERPatMotion&quot;) AND Team IN(17997,17998,17999,18000,18002)) OR type IN(EPIC,INITIATIVE))&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" IsSubEntityFetchEnabled="true" PrimaryTable="Task" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+        <ServiceHeaders>
+          <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+        </ServiceHeaders>
+      </JIRADataProvider>
+    </DataProvider>
+
+    <DataProvider DataProviderUId="0DF15E94-70A7-463B-9F09-6185F8AEB6EA" Name="DataProvider-Bug" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+      <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider40" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,customfield_18514,key,customfield_12810,priority,issuelinks,fixVersions,issuetype,status,duedate,customfield_48417,customfield_25420,resolution,resolutiondate,created,updated,reporter,customfield_77511,customfield_10723,environment,customfield_12811,customfield_77510&amp;jql=updated&gt;'{LastRanOn}'{EffectiveCondition} AND project={Key} AND issuetype=Bug&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" IsSubEntityFetchEnabled="true" PrimaryTable="Bug" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+        <ServiceHeaders>
+          <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+        </ServiceHeaders>
+      </JIRADataProvider>
+    </DataProvider>
+
+	<DataProvider DataProviderUId="99537D18-6177-40EB-BF15-52B2A9CFB6A5" Name="DataProvider-Custom Feature" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+		  <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider60" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,issuetype,customfield_18514,key,resolutiondate,created,updated,priority,status,issuelinks,labels,customfield_48710,fixVersions,duedate,customfield_10723,resolution,customfield_22852,created,updated,reporter,customfield_77510&amp;jql=updated&gt;'{LastRanOn}'{EffectiveCondition} AND project={Key} AND issuetype='Epic'&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" IsSubEntityFetchEnabled="true" PrimaryTable="Custom Feature" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+			  <ServiceHeaders>
+				  <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+			  </ServiceHeaders>
+		  </JIRADataProvider>
+	  </DataProvider>
+	<DataProvider DataProviderUId="226C93DE-FC59-4157-810F-8A2A964346FF" Name="DataProvider-ChangeRequest" DataProviderTypeName="JIRA" DataFileFolderPath="{ProcessPipelineInstanceFolderPath}/DataFiles/{ProcessUId}" DataStoreStartedOnKeyName="{DataProviderName}StartedOn" DataStoreLastRanOnKeyName="{DataProviderName}LastRanOn">
+      <JIRADataProvider ServiceDataProviderUId="43E3545D-346B-4DC9-8E11-602A8ECFE2E5" Name="JIRA-DataProvider50" DateTimeFormat="yyyy-MM-dd HH:mm" TimeZone="Europe/Berlin" ServiceUrl="https://jira.telekom.de/rest/api/2/search?fields=&amp;jql=updated&gt;'{LastRanOn}'{EffectiveCondition} AND project={Key} AND issuetype= AND ((assignee in membersOf(&quot;team_ACN_ERPatMotion&quot;) AND Team IN(17997,17998,17999,18000,18002)) OR type IN(EPIC,INITIATIVE))&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" SearchByIdUrl="https://jira.telekom.de/rest/api/2/search?fields=project,summary,description,assignee,duedate,customfield_18514,customfield_12810,key,priority,fixVersions,status,issuetype,customfield_10741,customfield_10723,labels,resolution,resolutiondate,created,updated,reporter,customfield_12811,customfield_77510,issuelinks&amp;jql=issuetype in (Task,Sub-task) AND key in ({ids})&amp;startAt={startIndex}&amp;expand=changelog,renderedFields" IsSubEntityFetchEnabled="true" PrimaryTable="ChangeRequest" PrimaryTableKey="id" HttpVerbName="GET" AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" MIMEMediaType="application/json" Accept="application/json" DataFormatterTypeName="Json" JsonRootNode="response" MaxResult="100" BulkLoad="true" EffectiveFrom="2024-08-01 00:00" EffectiveTo="" ProjectName="HEJ - HR_Recruit_Place_Grow" ProjectKey="HRRPG" FileNameFormat="{PrimaryTable}-{DataSourceIndex}" ProcessingFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processing/{ProcessUId}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Processed/{ProcessUId}" FailedFolderPath="{ProcessPipelineInstanceFolderPath}/Messages/Failed/{ProcessUId}">
+        <ServiceHeaders>
+          <ServiceHeader Name="Source" Value="myWizardToolGateway" />
+        </ServiceHeaders>
+      </JIRADataProvider>
+    </DataProvider>
+
+  </DataProviders>
+
+  <DataFormatters>
+    <DataFormatter DataFormatterUId="A9DD5094-B5C7-4756-A769-430F618800A4" Name="DataFormatter" DataFormatterTypeName="Xslt">
+      <XsltDataFormatter XsltDataFormatterUId="659EBFD8-1D16-49DB-88AB-607E614D23CD" Name="XsltDataFormatter" XsltFilePath="{ProcessPipelineFolderPath}/DataFormatters/{ProcessPipelineShortName}.xslt" />
+    </DataFormatter>
+  </DataFormatters>
+
+  <!-- <PropertyInjectors> -->
+  <!-- <PropertyInjector PropertyInjectorUId="4AF9C44E-2586-4F48-89A1-647FBDB15D56" -->
+  <!-- Name="ClientUIdPropertyInjector" -->
+  <!-- PropertyInjectorTypeName="ClientUId"> -->
+  <!-- <ClientUIdPropertyInjector ClientUIdPropertyInjectorUId="C03FC9B7-70C9-4300-917D-33E38081EDCB" -->
+  <!-- Name="ClientUIdPropertyInjector01" -->
+  <!-- PropertyName="ClientUId" -->
+  <!-- ClientUIDConfigpath="{ProcessPipelineFolderPath}/{ProcessPipelineShortName}-PropertyInjector.xml"/> -->
+  <!-- </PropertyInjector> -->
+  <!-- </PropertyInjectors> -->
+  <AuthProviders>
+
+    <AuthProvider AuthProviderUId="15A5E25A-FDA1-4669-8D09-316B7D45CA6F" Name="AuthProvider-JIRA" AuthProviderTypeName="WindowsBasic">
+      <BasicAuthProvider BasicAuthProviderUId="03490D50-834C-4C26-AAC5-89D1C04B1EFB" Name="BasicAuthProvider-JIRA" UserName="techuser_myWizard_SI" Password="FBYYY7ZTC4F2URKY5C5DJY5AYRCBZXJAI3NHEOGSNGGTZGXUEQPLNLTMX7FC5IUCIDD4PDYEQ5KIWUKUGQ2RNWKJTL77SWPTS4SG7PBLOUPF6CVPC4Z2QJF3CNWVM7DK" EnableX509CertificateAuthorization="false" KeyNamePrefix="" Domain="" />
+    </AuthProvider>
+
+  </AuthProviders>
+
+  <Subscribers>
+    <Subscriber SubscriberUId="58FEEBB6-398B-483C-A5AC-67F99F292B58" Name="Subscriber">
+      <Listeners>
+        <Listener ListenerUId="2DA4AB46-E40C-476E-A9FD-F1134AC55390" Name="Listener-MyWizardListener" ListenerTypeName="MyWizard">
+          <MyWizardListener MyWizardListenerUID="0E13313F-7F3F-4B19-A9E3-D5A8FBA31365" Name="Listener-Files" ServiceResourceUrl="v1/EventMessages" HttpVerbName="POST" AuthProviderUId="A459A6E0-AA3B-4898-8D51-29A4C94C67C9" MIMEMediaType="application/xml" SupportMultipleEntities="false" SupportEntityCollection="true" SupportedEntitiesCSV="WorkItem,ChangeRequest" DataFormatterTypeName="Xml" EmbedEntityInBody="true" FileNameFormat="{ListenerName}-{DataSourceIndex}" ProcessedFolderPath="{ProcessPipelineInstanceFolderPath}/Notifications/Processed/{ProcessUId}/{ListenerName}" FailedNotificationFolderPath="{ProcessPipelineInstanceFolderPath}/Notifications/Failed/{ProcessUId}/{ListenerName}" FailedRetryNotificationFolderPath="{ProcessPipelineInstanceFolderPath}/Notifications/FailedRetry/{ProcessUId}/{ListenerName}" RetryCount="3" OfflineRetryCount="3" ObjectListener="true" CDMFlow="true">
+            <!--<RESTServiceListenerHeaders>
+              <RESTServiceListenerHeader Name="Source"
+                                         Value="myWizardToolGateway" />
+            </RESTServiceListenerHeaders>-->
+          </MyWizardListener>
+        </Listener>
+      </Listeners>
+    </Subscriber>
+  </Subscribers>
+
+  <Entities>
+    <Entity EntityUId="00200000-0000-0000-0000-000000000000" Name="WorkItem" PluralName="WorkItems" EntityIdColumnName="WorkItemExternalId" HierarchicalOrder="10" />
+    <Entity EntityUId="00020100-0600-0000-0000-000000000000" Name="ChangeRequest" PluralName="ChangeRequests" EntityIdColumnName="ChangeRequestExternalId" HierarchicalOrder="20" />
+  </Entities>
+
+</ToolGateway>
